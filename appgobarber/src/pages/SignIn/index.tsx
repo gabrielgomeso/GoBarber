@@ -88,9 +88,9 @@ const SignIn: React.FC = () => {
           'Ocorreu um erro ao fazer login, cheque as credenciais.',
         );
       }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    // eslint-disable-next-line function-paren-newline
-    }, []);
+    },
+    [signIn],
+  );
 
   return (
     <>
