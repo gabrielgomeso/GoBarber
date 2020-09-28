@@ -1,11 +1,9 @@
-/* eslint-disable camelcase */
 import path from 'path';
 import fs from 'fs';
 import uploadConfig from '@config/upload';
 import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
-
 import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider';
 import IUsersRepository from '../repositories/IUsersRepository';
 
@@ -22,7 +20,7 @@ class UpdateUserAvatarService {
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
 
-    @inject('Storage')
+    @inject('StorageProvider')
     private storageProvider: IStorageProvider,
   ) {}
 
@@ -34,8 +32,6 @@ class UpdateUserAvatarService {
     }
 
     if (user.avatar) {
-      // Deletar avatar anterior
-
       await this.storageProvider.deleteFile(user.avatar);
     }
 
